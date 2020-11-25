@@ -939,6 +939,7 @@ setup_ios_env() {
     if [ "${IOS_ARCH:3:2}" == "64" ]; then
       ios_min=7.0
     else
+      disable_opt asm
       TOOLCHAIN_OPT+=" --disable-thumb"
       # armv7 since 3.2, but ios10 sdk does not have crt1.o/crt1.3.1.o, use 6.0 is ok. but we add these files in tools/lib/ios5, so 5.0 and older is fine
       local sdk_crt1_o=`xcrun --show-sdk-path --sdk iphoneos`/usr/lib/crt1.o
